@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 
 import { Route, Routes } from 'react-router-dom'
@@ -8,11 +8,14 @@ import Note from '../page/Note'
 import Login from '../page/Login'
 import Registerpage from '../page/Registerpage'
 
-import { useState } from 'react'
+
 import ProtectedRoute from '../components/ProtectedRoute'
+import { AuthContext } from '../context/Authprovider'
+import PublicRoute from '../components/PublicRoute'
 
 const AppRoutes = () => {
-    const [user, setuser] = useState(false)
+    
+  const {user} =useContext(AuthContext)
   return (
     <>
      <Routes>
@@ -20,25 +23,34 @@ const AppRoutes = () => {
 
 
 
-<Route path='/login' element={<Login />} />
+<Route path='/login' element={
+  <PublicRoute>
+    <Login />
+  </PublicRoute>
+    } />
 
-<Route path='/register' element={<Registerpage />} />
+<Route path='/register' element={
+  <PublicRoute>
+  <Registerpage />
+  </PublicRoute>
+  
+  } />
 
 
 <Route path='/' element={
-  <ProtectedRoute user={user}>
+  <ProtectedRoute >
     <Home />
   </ProtectedRoute>
 } />
   
   <Route path='/Task' element={
-    <ProtectedRoute user={user}>
+    <ProtectedRoute >
       <Task/>
     </ProtectedRoute>
   }/>
   
   <Route path='/Note' element={
-    <ProtectedRoute user={user}>
+    <ProtectedRoute >
       <Note/>
     </ProtectedRoute>
   }/>

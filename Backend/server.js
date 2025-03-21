@@ -5,11 +5,13 @@ import userroute from "./routes/user.routes.js";
 import cors from "cors"
 
 import mongoDb from "./config/db.js";
+import cookieParser from "cookie-parser";
 
 mongoDb()
 
 const app = express();
 const port = 3000;
+app.use(cookieParser())
 
 app.use(cors({
     origin:"http://localhost:5173",

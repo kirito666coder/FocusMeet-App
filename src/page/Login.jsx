@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate,  } from 'react-router-dom'
 
+import { AuthContext } from '../context/Authprovider'
 
 const Login =  () => {
 
   const [loding, setloding] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
-
-
+  
+  const{checkUserAuth} = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const [logform, setlogform] = useState({
     email:'',
@@ -53,10 +55,13 @@ const Login =  () => {
     }
     setloding(false)
 
-    console.log(data.message)
+   await checkUserAuth()
+    
+   navigate('/')
+
   
   }catch(error){
-    console.error("Error logging in:", error);
+    console.error("Error in logging :", error);
   }
  }
 
