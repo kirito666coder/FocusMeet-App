@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const Task = () => {
    const [currentHour, setcurrentHour] = useState(new Date().getHours());
    const [isAM, setisAM] = useState(currentHour<12)
-
+   const [Loading, setLoading] = useState(true)
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
@@ -32,12 +32,19 @@ const Task = () => {
       
     }catch(error){
       console.error("Error fetching dates:",error)
+    }finally{
+      
+      setLoading(false)
     }
    }
    console.log(next10Days)
    fetchNext10Days()
-
   }, [])
+
+  useEffect(() => {
+    
+  }, [setnext10Days])
+  
   
  
 
@@ -80,7 +87,7 @@ const Task = () => {
            {next10Days.map((day,index)=>{
             
            return(
-             <li key={index} className='p-4 px-6 bg-zinc-200 rounded-2xl '>
+             <li key={index} className={` p-4 px-6 ${index ===0?" bg-white border-x-3 rounded-t-2xl border-t-3 border-zinc-200":" rounded-2xl  bg-zinc-200"} `}>
             <div className='flex flex-col'>
             <span className='font-bold' >{day.dayNumber}</span>
             <span className='text-xl ml-2 font-bold'>{day.dayName}</span>
@@ -92,11 +99,19 @@ const Task = () => {
 
           
             
-          </ul>
+          </ul >
           <div className=' h-100 w-full mt-10 flex items-center justify-center '>
-           <div className="task h-90 w-[40%] bg-white rounded-4xl shadow-2xl shadow-zinc-600">
-           <h3 className=' font-bold text-black m-5 '>Today's Tasks - May 16 2025</h3>
-           <ul className=' flex-wrap flex gap-x-1 gap-y-4'>
+           <div className=" overflow-hidden task h-90 w-[40%] bg-white rounded-4xl shadow-2xl shadow-zinc-600">
+              {Loading ? (
+                 <h3 className="font-bold text-gray-500 m-5">Loading tasks...</h3>
+              ): next10Days.length > 0 ? (
+           <h3 className=' font-bold text-black m-5 '>Today's Tasks - {next10Days[0].month} {next10Days[0].dayNumber} {next10Days[0].year}</h3>
+              ):(
+                <h3 className="font-bold text-gray-500 m-5">No tasks available</h3>
+              )}
+
+              <div className=' overflow-x-scroll w-full h-[80%]'>
+           <ul className=' flex-wrap flex gap-x-1 gap-y-4  '>
 
 
             <li className='h-30 bg-red-200 w-[45%] ml-5 rounded-2xl'>
@@ -107,6 +122,30 @@ const Task = () => {
               <p className='text-sm ml-5'>Website Design</p>
             </li>
                   
+                  
+            
+            <li className='h-30 bg-red-200 w-[45%] ml-5 rounded-2xl'>
+              <div className='flex mt-5  justify-between'>
+              <h3 className='text-xl font-medium ml-5 '>Website Design</h3>
+              <div className='mr-2'>hi</div>
+              </div>
+              <p className='text-sm ml-5'>Website Design</p>
+            </li>
+
+
+            
+                  
+            
+            <li className='h-30 bg-red-200 w-[45%] ml-5 rounded-2xl'>
+              <div className='flex mt-5  justify-between'>
+              <h3 className='text-xl font-medium ml-5 '>Website Design</h3>
+              <div className='mr-2'>hi</div>
+              </div>
+              <p className='text-sm ml-5'>Website Design</p>
+            </li>
+
+
+            
                   
             
             <li className='h-30 bg-red-200 w-[45%] ml-5 rounded-2xl'>
@@ -140,40 +179,71 @@ const Task = () => {
 
 
            </ul>
+              </div>
            </div>
            <div className="flex flex-col  items-center  create-task w-[50%] bg-white ml-15 h-90 rounded-4xl shadow-2xl shadow-zinc-600">
-                <input type="text" placeholder='Add task' className='mx-auto mt-5 h-12 w-[90%] border-none outline-none bg-zinc-300 py-3 px-5 rounded-2xl text-zinc-900' />
-               <button className='bg-green-200 w-30 py-1 rounded-2xl mt-4 hover:bg-green-300  '>Add</button>
+                <form className='flex flex-col  items-center w-full'>
 
-              <ul className=' w-full h-60'>
+                <input
+                name='title'
+                 type="text"
+                  placeholder='Add task' 
+                  className='mx-auto mt-5 h-12 w-[90%] border-none outline-none bg-zinc-300 py-3 px-5 rounded-2xl text-zinc-900' />
                 
-              <li className='m-auto h-16 bg-blue-200 w-[90%] rounded-2xl'>
-              <div className='flex mt-5  justify-between'>
-              <h3 className='text-xl mt-2 font-medium ml-5 '>Website Design</h3>
-              <div className='mr-2 mt-3'>hi</div>
-              </div>
-              <p className='text-sm ml-5'>Website Design</p>
-            </li>
-                
-              <li className='m-auto h-16 bg-blue-200 w-[90%] rounded-2xl'>
-              <div className='flex mt-5  justify-between'>
-              <h3 className='text-xl mt-2 font-medium ml-5 '>Website Design</h3>
-              <div className='mr-2 mt-3'>hi</div>
-              </div>
-              <p className='text-sm ml-5'>Website Design</p>
-            </li>
-                
-              <li className='m-auto h-16 bg-blue-200 w-[90%] rounded-2xl'>
-              <div className='flex mt-5  justify-between'>
-              <h3 className='text-xl mt-2 font-medium ml-5 '>Website Design</h3>
-              <div className='mr-2 mt-3'>hi</div>
-              </div>
-              <p className='text-sm ml-5'>Website Design</p>
-            </li>
+                <input
+                 type="text" 
+                 placeholder=''
+                 className='mx-auto mt-5 h-12 w-[90%] border-none outline-none bg-zinc-300 py-3 px-5 rounded-2xl text-zinc-900' />
+                  
+                  
+                   <div className='flex cursor-pointer w-[90%] m-auto gap-5 mt-4'>
+
+                    <label className='relative h-10 w-50'>                  
+                 <input
+                     name='choice'
+                     type="radio"
+                     className='h-10 w-full peer hidden'
+                     />
+                      <div className='h-10 w-full bg-red-300  absolute z-10 top-0 peer-checked:border-3 rounded-2xl peer-checked:border-zinc-400 text-white font-bold flex justify-center items-center'>RED</div>
+                 </label>
 
 
+                    <label className='relative h-10 w-50'>                  
+                 <input
+                     name='choice'
+                     type="radio"
+                     className='h-10 w-full peer hidden'
+                     />
+                 <div className='h-10 w-full bg-blue-300  absolute z-10 top-0 peer-checked:border-3 rounded-2xl peer-checked:border-zinc-400 text-white font-bold flex justify-center items-center'>BLUE</div>
+                 </label>
 
-              </ul>
+
+                    <label className='relative h-10 w-50'>                  
+                 <input
+                     name='choice'
+                     type="radio"
+                     className='h-10 w-full peer hidden'
+                     />
+                 <div className='h-10 w-full bg-green-300  absolute z-10 top-0 peer-checked:border-3 rounded-2xl peer-checked:border-zinc-400 text-white font-bold flex justify-center items-center'>GREEN</div>
+                 </label>
+
+
+                    <label className='relative h-10 w-50'>                  
+                 <input
+                     name='choice'
+                     type="radio"
+                     className='h-10 w-full peer hidden'
+                     />
+                 <div className='h-10 w-full bg-yellow-300  absolute z-10 top-0 peer-checked:border-3 rounded-2xl peer-checked:border-zinc-400 text-white font-bold flex justify-center items-center'>YELLOW</div>
+                 </label>
+
+                 </div>
+
+               <button 
+               className='bg-green-200 w-30 py-1 rounded-2xl mt-4 hover:bg-green-300  '>Add</button>
+                   
+                </form>
+              
                
            </div>
           </div>
