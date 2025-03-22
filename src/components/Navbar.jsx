@@ -20,9 +20,16 @@ setuser(null)
 
 }
 
+const getnavbarBG = ()=>{
+  if(location.pathname=== "/") return `bg-[url("/bg-blue.webp")]`
+  if(location.pathname=== "/Note")return `bg-[url("/bg-blue.webp")]`
+  if(location.pathname=== "/Task")return `bg-[url("/task-nav-bg.avif")]`
+  return `bg-[url("/bg-blue.webp")]`
+}
+
   return (
     <>
-    <div className='h-10 bg-purple-300 w-screen px-3 font-bold text-white flex justify-between items-center'>
+    <div className= {` ${getnavbarBG()} h-10  w-screen px-3 font-bold text-white flex justify-between items-center`}>
       <nav>
         HELLO WORLD 
       </nav>

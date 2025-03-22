@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-
+import { motion } from 'framer-motion'
 
 const Registerpage = () => {
 
@@ -9,7 +9,7 @@ const Registerpage = () => {
   const [loding, setloding] = useState(false)
   const [Error, setError] = useState('')
   const [Success, setSuccess] = useState('')
-
+ const navigate = useNavigate();
   const [formdata, setformdata] = useState({
     username: '',
     email: "",
@@ -75,10 +75,38 @@ const Registerpage = () => {
 
   }
 
+const [isExpanding, setisExpanding] = useState(false)
+
+useEffect(() => {
+  
+setTimeout(() => {
+  setisExpanding(true)
+}, 100);
+ 
+}, [])
+
+const handlAnimastion = ()=>{
+  setisExpanding(false)
+  
+  setTimeout(() => {
+    navigate("/login")
+  }, 100);
+}
+
+
   return (
     <>
-      <div className='bg-[url("/night-sky.jpg")] bg-cover bg-center h-screen w-screen flex justify-center items-center '>
+      <div className='bg-[url("/bg-blue.webp")] bg-cover bg-center h-screen w-screen flex justify-center items-center '>
+        
+      <motion.div className='w-full h-full flex justify-center items-center'
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: isExpanding ? 1 : 0, opacity: isExpanding ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+        >
+
+
         <div className='h-[45%] w-[60%] bg-zinc-900 opacity-80 backdrop-blur-3xl rounded-3xl flex justify-center items-center flex-col'>
+          <h1 className='text-[#001b9b] mb-8 font-bold text-4xl'>Register</h1>
           <form onSubmit={handlsubmit} className='flex flex-col text-white justify-center items-center gap-2 w-full '>
                
                {Success && <p className='text-green-500'>{Success}</p>}
@@ -112,21 +140,19 @@ const Registerpage = () => {
               className=' placeholder:text-white border-1 border-white px-4 py-3 w-[80%] rounded-lg' />
              <div className='w-[80%] flex justify-end '>
              
-                           <div className='text-blue-600 text-sm  cursor-pointer '>
-                             <Link to={"/login"}>
-                             Log in
-                             </Link>
+                           <div onClick={handlAnimastion} className='text-blue-600 text-sm  cursor-pointer '>
+                              Log in
                              </div>
                            </div>
             <button
             type='submit'
             disabled={loding}
-            className='h-10 w-[40%] rounded-4xl bg-blue-500 hover:bg-blue-600'>
+            className='h-10 w-[40%] rounded-4xl bg-[#003971] hover:bg-[#001b9b]'>
               {loding ? 'Registering...': "Rgister"}
             </button>
           </form>
         </div>
-
+        </motion.div>
       </div>
 
     </>
