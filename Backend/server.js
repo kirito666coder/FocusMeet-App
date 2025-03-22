@@ -1,6 +1,7 @@
 import express from "express"
 
 import userroute from "./routes/user.routes.js";
+import taskroute from "./routes/task.routes.js";
 
 import cors from "cors"
 
@@ -22,7 +23,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use("/user",userroute)
-
+app.use("/task",taskroute)
 
 
 

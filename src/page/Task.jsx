@@ -17,8 +17,29 @@ const Task = () => {
     return ()=> clearInterval(interval)
   
   }, [])
-  
 
+  const [next10Days, setnext10Days] = useState([])
+  
+  useEffect(() => {
+   const fetchNext10Days = async ()=>{
+    try{
+      const response = await fetch("http://localhost:3000/task/next10days",{
+        method:"GET",
+      })
+      
+      const data = await response.json()
+      setnext10Days(data);
+      
+    }catch(error){
+      console.error("Error fetching dates:",error)
+    }
+   }
+   console.log(next10Days)
+   fetchNext10Days()
+
+  }, [])
+  
+ 
 
   const formattedHour = currentHour === 0 ? 12 : currentHour > 12 ? currentHour - 12 : currentHour;
   const timeList = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -30,7 +51,7 @@ const Task = () => {
       <main className='bg-zinc-900 h-[95vh] w-screen'>
        <div className='flex border-4  border-white  bg-sky-300 h-[100%] w-[100%]'>
        <div className="time w-[5%] flex justify-center items-center">
-        <ul className='text-xl font-bold text-white flex flex-col w-full  h-full overflow-hidden'>
+        <ul className='text-xl gap-1 font-bold text-white flex flex-col w-full  h-full overflow-hidden'>
          
          {timeList.map((hour,index) => {
            const period = isAM ? "AM" : "PM";
@@ -54,18 +75,22 @@ const Task = () => {
           <h1 className='m-15 text-5xl font-bold text-sky-300'>My Task</h1>
             <input type="text" placeholder='Search' className=' px-6 mr-15 bg-zinc-200 p-3 w-75 rounded-2xl' />
           </div>
-          <ul className='flex text-5xl text-gray-500 w-[92%] justify-between ml-15'>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
-            <li className='p-4 bg-zinc-200 rounded-2xl '>12</li>
+          <ul className='flex text-5xl text-gray-500 w-[92%]  justify-between ml-15'>
+           
+           {next10Days.map((day,index)=>{
+            
+           return(
+             <li key={index} className='p-4 px-6 bg-zinc-200 rounded-2xl '>
+            <div className='flex flex-col'>
+            <span className='font-bold' >{day.dayNumber}</span>
+            <span className='text-xl ml-2 font-bold'>{day.dayName}</span>
+            </div>
+          </li>
+            )
+           })}
+
+
+          
             
           </ul>
           <div className=' h-100 w-full mt-10 flex items-center justify-center '>
