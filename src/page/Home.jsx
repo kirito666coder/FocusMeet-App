@@ -1,11 +1,14 @@
 import React from 'react'
 
 import Navbar from '../components/Navbar'
+
 const home = () => {
   return (
     <>
      <Navbar />
-    Home page
+     <div className='h-screen w-screen'>
+   
+     </div>
     
     </>
   )

@@ -3,10 +3,10 @@ import React, { useContext } from 'react'
 
 import { Route, Routes } from 'react-router-dom'
 import Home from '../page/Home'
-import Task from '../page/Task'
-import Note from '../page/Note'
-import Login from '../page/Login'
-import Registerpage from '../page/Registerpage'
+import Task from '../page/Task/Task'
+import Note from '../page/Note/Note'
+import Login from '../page/Auth/Login'
+import Registerpage from '../page/Auth/Registerpage'
 
 
 import ProtectedRoute from '../components/ProtectedRoute'
@@ -15,14 +15,11 @@ import PublicRoute from '../components/PublicRoute'
 
 const AppRoutes = () => {
     
-  const {user} =useContext(AuthContext)
+  
   return (
     <>
      <Routes>
-
-
-
-
+      
 <Route path='/login' element={
   <PublicRoute>
     <Login />

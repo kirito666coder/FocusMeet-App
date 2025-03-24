@@ -22,7 +22,7 @@ setuser(null)
 
 const getnavbarBG = ()=>{
   if(location.pathname=== "/") return `bg-[url("/bg-blue.webp")]`
-  if(location.pathname=== "/Note")return `bg-[url("/bg-blue.webp")]`
+  if(location.pathname=== "/Note")return `bg-[url("/note-nab.jpg")]`
   if(location.pathname=== "/Task")return `bg-[url("/task-nav-bg.avif")]`
   return `bg-[url("/bg-blue.webp")]`
 }
@@ -37,7 +37,7 @@ const getnavbarBG = ()=>{
         <li><Link className=' hover:border-b-3 hover:border-b-white' to={'/'}>HOME</Link></li>
         <li><Link className=' hover:border-b-3 hover:border-b-white' to={'/Note'}>Note</Link></li>
         <li><Link className=' hover:border-b-3 hover:border-b-white' to={'/Task'}>Task</Link></li>
-        <button onClick={handelLogout} className=' hover:border-b-3 hover:border-b-white'>Log out</button>
+        <button onClick={handelLogout} className='hover:text-red-400 hover:border-b-3 hover:border-b-white'>Log out</button>
       </ul>
 
     </div>

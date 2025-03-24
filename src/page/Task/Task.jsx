@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import Navbar from '../components/Navbar'
+import Navbar from '../../components/Navbar'
 const Task = () => {
   const [currentHour, setcurrentHour] = useState(new Date().getHours());
   const [isAM, setisAM] = useState(currentHour < 12)
