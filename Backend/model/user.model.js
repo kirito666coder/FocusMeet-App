@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
 
+
+const noteSchema = new mongoose.Schema({
+    title:String,
+    description:String,
+    fastpagecolor:String,
+    secondpagecolor:String,
+    tages:[{tage:String,tagecolor:String}]
+})
+
 const taskSchema = new mongoose.Schema({
     title:String,
     description:String,
@@ -12,7 +21,8 @@ const userSchema = new mongoose.Schema({
     username:String,
     email:String,
     password:String,
-    tasks:[taskSchema]
+    tasks:[taskSchema],
+    notes:[noteSchema],
 })
 
 const user = mongoose.model("user",userSchema)
