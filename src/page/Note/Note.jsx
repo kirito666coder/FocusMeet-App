@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Navbar from '../../components/Navbar'
 import NoteTop from './NoteTop'
@@ -11,21 +11,30 @@ import NoteRight from './NoteRight'
 
 const Note = () => {
 
+  const [newdataincoming, setnewdataincoming] = useState(false)
 
+  const [typeOn, settypeOn] = useState(false)
 
-
+  const [notesid, setnotesid] = useState('')
 
 
   return (
     <>
       <Navbar />
 
-        <NoteTop/>
+      <NoteTop
+        setnotesid={setnotesid}
+        typeOn={typeOn} settypeOn={settypeOn}
+        newdataincoming={newdataincoming} setnewdataincoming={setnewdataincoming} />
 
-        <NoteLeft/>
+      <NoteLeft
+        notesid={notesid}
+        newdataincoming={newdataincoming} setnewdataincoming={setnewdataincoming} />
 
-        <NoteRight/>
-        
+      <NoteRight
+        typeOn={typeOn} settypeOn={settypeOn}
+        setnewdataincoming={setnewdataincoming} />
+
     </>
   )
 }
