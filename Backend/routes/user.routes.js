@@ -10,7 +10,7 @@ const router = express.Router();
 
 
 router.post('/register', async (req,res)=>{
-    console.log(req.body)
+    
     
     const {username,email,password} = req.body
     
@@ -48,7 +48,7 @@ router.post('/register', async (req,res)=>{
 router.post("/login", async (req,res)=>{
 
     const {email,password} = req.body
-     console.log(req.body)
+   
      
     const user = await userModel.findOne({email})
     
@@ -91,5 +91,15 @@ router.post("/logout",(req,res)=>{
     })
     res.status(200).json({ message: "Logged out successfully" });
 })
+
+router.get("/alluser", async (req,res)=>{
+ 
+const users = await userModel.find().lean()
+
+res.json(users)
+
+})
+
+
 
 export default router;

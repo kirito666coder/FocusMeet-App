@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lordicon/react": "^1.10.1",
     "@tailwindcss/vite": "^4.0.14",
     "cors": "^2.8.5",
     "framer-motion": "^12.5.0",
+    "lottie-web": "^5.12.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",

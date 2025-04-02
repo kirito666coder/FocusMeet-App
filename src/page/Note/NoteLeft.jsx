@@ -135,10 +135,15 @@ useEffect(() => {
                         <div className=' shadow-2xl border-t-2 border-t-white h-[70%] w-[60%] flex flex-col items-center justify-center '>
                           
                                 <div className='w-full h-full flex justify-center items-center flex-col'>
-
+                              {selectedNote &&
+                              <>
                                 <h1 className='text-white font-bold  mt-2 text-3xl'>{selectedNote.title}</h1>
                                 <h2 className='text-white font-bold  mt-2'>{selectedNote.description}</h2>
+                              </>
+                                
+                            }
                                 </div>
+
                         
                           
 

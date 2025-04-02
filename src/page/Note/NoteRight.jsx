@@ -69,7 +69,7 @@ const NoteRight = ({ setnewdataincoming ,typeOn, settypeOn }) => {
       ...prev,
       tages: [...(prev.tages || []), { tage: tagevalue.tage, tagecolor: color }],
     }));
-    console.log(selectedColor)
+  
     settagevalue({ tage: "" })
 
   }

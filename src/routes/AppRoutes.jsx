@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 
 import { Route, Routes } from 'react-router-dom'
-import Home from '../page/Home'
+import Home from '../page/Home/Home'
 import Task from '../page/Task/Task'
 import Note from '../page/Note/Note'
 import Login from '../page/Auth/Login'

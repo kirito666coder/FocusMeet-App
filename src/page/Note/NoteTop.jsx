@@ -60,7 +60,7 @@ const NoteTop = ({newdataincoming,setnewdataincoming,settypeOn,typeOn,setnotesid
   
 
           setResults(data)
-          console.log(data)
+          
           
           return data.sort((a, b) => {
               const aTitleMatch = a.title.toLowerCase().includes(query.toLowerCase()) ? 2 : 0;
@@ -99,7 +99,12 @@ const NoteTop = ({newdataincoming,setnewdataincoming,settypeOn,typeOn,setnotesid
 
 
   return (
-    <div className=' h-[20vh] flex'>
+    <motion.div className=' h-[20vh] flex'
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 0.9 }}
+    transition={{ duration: 0.5, delay: 0.3 }} 
+    >
       <div>
 
         <div className=' relative w-[55vw] h-15 flex justify-center items-center'>
@@ -154,7 +159,7 @@ const NoteTop = ({newdataincoming,setnewdataincoming,settypeOn,typeOn,setnotesid
       
     
       
-    </div>
+    </motion.div>
   )
 }
 

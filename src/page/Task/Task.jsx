@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Navbar from '../../components/Navbar'
+import { motion } from 'framer-motion';
 const Task = () => {
   const [currentHour, setcurrentHour] = useState(new Date().getHours());
   const [isAM, setisAM] = useState(currentHour < 12)
@@ -175,8 +176,14 @@ const Task = () => {
 
   return (
     <>
+    
       <Navbar />
-      <main className='bg-zinc-900 h-[95vh] w-screen'>
+      <motion.main className='bg-zinc-900 h-[95vh] w-screen'
+       initial={{ opacity: 0, width:0 }}
+       animate={{ opacity: 1, width:"100vw" }}
+       exit={{ opacity: 0, width:"90vw" }}
+       transition={{ duration: 0.4 }} 
+      >
         <div className='flex border-4  border-white  bg-sky-300 h-[100%] w-[100%]'>
           <div className="time w-[5%] flex justify-center items-center">
             <ul className='text-xl gap-1 font-bold text-white flex flex-col w-full  h-full overflow-hidden'>
@@ -340,7 +347,7 @@ const Task = () => {
             </div>
           </div>
         </div>
-      </main>
+      </motion.main>
     </>
   )
 }

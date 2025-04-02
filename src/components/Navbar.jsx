@@ -1,14 +1,16 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { AuthContext } from '../context/Authprovider'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Navbar = () => {
 
   const{setuser} = useContext(AuthContext)
-
+  const location = useLocation();
+  
 const handelLogout = async ()=>{
 
-  console.log("logout")
+
 const respons = await fetch("http://localhost:3000/user/logout",{
   method:"POST",
   credentials:"include",
@@ -27,9 +29,37 @@ const getnavbarBG = ()=>{
   return `bg-[url("/bg-blue.webp")]`
 }
 
+const getanimation = ()=>{
+  if(location.pathname ==='/Task'){ 
+    return  {
+       initial:{ opacity: 0, width:0 },
+    animate:{ opacity: 1, width: "100vw" },
+    exit:{ opacity: 0, width:0 },
+    transition:{ duration: 0.5, delay: 0.3 } 
+  }}
+  if(location.pathname ==="/Note"){
+    return{
+      initial:{opacity:0,scale:0},
+    animate:{opacity:1,scale:1},
+    exit:{opacity:0.9,scale:0.9},
+    transition:{duration:0.5},
+    }
+  }
+
+  return{}
+}
+
+
   return (
     <>
-    <div className= {` ${getnavbarBG()} h-10  w-screen px-3 font-bold text-white flex justify-between items-center`}>
+    <AnimatePresence mode='wait'>
+    <motion.div
+     key={location.pathname}
+    className= {` ${getnavbarBG()} rounded-b-3xl  h-10  w-screen px-3 font-bold text-white flex justify-between items-center`}
+    {...getanimation(location.pathname)}
+    
+   
+    >
       <nav>
         HELLO WORLD 
       </nav>
@@ -40,8 +70,8 @@ const getnavbarBG = ()=>{
         <button onClick={handelLogout} className='hover:text-red-400 hover:border-b-3 hover:border-b-white'>Log out</button>
       </ul>
 
-    </div>
-    
+    </motion.div>
+    </AnimatePresence>
     
     </>
   )

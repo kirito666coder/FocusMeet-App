@@ -21,8 +21,12 @@ const userSchema = new mongoose.Schema({
     username:String,
     email:String,
     password:String,
+    profilepic:String,
+    profilepicback:String,
+    following:[{type:mongoose.Schema.Types.ObjectId, ref:"user"}],
     tasks:[taskSchema],
     notes:[noteSchema],
+    
 })
 
 const user = mongoose.model("user",userSchema)

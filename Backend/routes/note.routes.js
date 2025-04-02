@@ -104,19 +104,18 @@ router.get("/search", authMiddleware, async (req, res) => {
         if (!query) return res.status(400).json({ error: "Query parameter is required" });
 
         const userId = req.user.id;
-        console.log("User ID:", userId); 
+      ; 
 
         const user = await usermodle.findById(userId);
         if (!user) return res.status(404).json({ error: "User not found" });
 
-        console.log("User Notes:", user.notes);
+       
         const matchingNotes = user.notes.filter(note =>
             note.title.toLowerCase().includes(query.toLowerCase()) ||
             note.description.toLowerCase().includes(query.toLowerCase()) ||
             (note.tages && note.tages.some(tag => tag.tage.toLowerCase().includes(query.toLowerCase())))
         );
 
-        console.log("Matching Notes:", matchingNotes); 
         res.json(matchingNotes);
     } catch (error) {
         console.error("Error in search API:", error);
