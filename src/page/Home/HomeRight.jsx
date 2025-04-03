@@ -28,13 +28,13 @@ const HomeRight = ({ data, hovercolore, bordercolor, bgcorlor, textcolor }) => {
 
   const [following, setfollowing] = useState([])
 
+  const checkfollowing = async () => {
+    const followeduser = await getfollowedusers();
+    setfollowing(followeduser.map(user => user._id));
+  }
   useEffect(() => {
-    const checkfollowing = async () => {
-      const followeduser = await getfollowedusers();
-      setfollowing(followeduser.map(user => user._id));
-    }
     checkfollowing();
-  }, [following]);
+  }, []);
 
   const handlefollow = async (targetuserid) => {
     await followuser(targetuserid);
@@ -123,7 +123,7 @@ user.username.toLowerCase().includes(searchTerm.toLowerCase())
 
         <div className={`border-1 mt-5 h-137 rounded-2xl border-${bordercolor}`}>
           <h1 className={`text-2xl font-bold ${textcolor}  m-2`}>Most like post</h1>
-          <div className=' border-2 w-full flex justify-center items-center'>
+          <div className=' w-full flex justify-center items-center'>
             {mostlike.postimage ? (
               <img src={`http://localhost:3000/${mostlike.postimage}`} className='h-auto max-h-105 rounded-2xl' />
             ) : (
@@ -164,7 +164,10 @@ user.username.toLowerCase().includes(searchTerm.toLowerCase())
                     className={`h-10 w-10 rounded-full bg-center bg-cover`}></div>
                   <h3 className={`${textcolor} font-medium mt-1`}>{user.username}</h3>
                   <button
-                    onClick={() => isfollowing ? handleunfollow(user._id) : handlefollow(user._id)}
+                    onClick={() =>{
+                      checkfollowing();
+                      checkfollowing();
+                      isfollowing ? handleunfollow(user._id) : handlefollow(user._id)}}
                     className={`h-8 font-bold rounded-2xl px-2 absolute top-1.5 right-1 ${isfollowing ? "bg-red-400 hover:bg-red-500 " : "bg-blue-400 hover:bg-blue-500"} flex justify-center items-center ${textcolor}`}>
                     {isfollowing ? "unfollow" : "follow"}
                   </button>
