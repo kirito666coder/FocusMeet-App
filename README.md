@@ -15,5 +15,8 @@
 ## NOTE Page 
 ![](./public/Notepageimage.png)
 
+## Note open
+![](./public/notepageviewnote.png)
+
 ## TASK Page
 ![](./public/Taskpageimag.png)
