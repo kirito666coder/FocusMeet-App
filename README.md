@@ -57,31 +57,31 @@ From writing notes, managing tasks, to connecting with others — FocusMeet keep
 ## 🖼️ App Screenshots
 
 ### 📲 Login Page
-![Login Page](./public/loginpageimage.png)
+![Login Page](./Frontend/./public/loginpageimage.png)
 
 ### 🧾 Register Page
-![Register Page](./public/Registerpageimag.png)
+![Register Page](./Frontend/./public/Registerpageimag.png)
 
 ### 🏠 Home Page (Dark Mode)
-![Home Page](./public/HomepageImage.png)
+![Home Page](./Frontend/./public/HomepageImage.png)
 
 ### 🌞 Home Page (Light Mode)
-![Home Page Light Mode](./public/dark-mode-light-mode.png)
+![Home Page Light Mode](./Frontend/./public/dark-mode-light-mode.png)
 
 ### 👥 Following Section
-![Home and Following](./public/HomepageandFollowingpageimag.png)
+![Home and Following](./Frontend/./public/HomepageandFollowingpageimag.png)
 
 ### 🗒️ Note Page
-![Note Page](./public/Notepageimage.png)
+![Note Page](./Frontend/./public/Notepageimage.png)
 
 ### 📖 Note Open View
-![Opened Note View](./public/notepageviewnote.png)
+![Opened Note View](./Frontend/./public/notepageviewnote.png)
 
 ### 📋 Task Page
-![Task Page](./public/Taskpageimag.png)
+![Task Page](./Frontend/./public/Taskpageimag.png)
 
 ### ➕ Add Task
-![Add Task](./public/create-tasks.png)
+![Add Task](./Frontend/./public/create-tasks.png)
 
 ---
 
