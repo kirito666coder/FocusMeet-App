@@ -1,19 +1,48 @@
 # 📱 FocusMeet
 
+<div align="center">
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+
 **Your all-in-one productivity and social platform.**
 
 FocusMeet is a full-stack MERN (MongoDB, Express, React, Node.js) web application that blends personal productivity tools with social networking features.
 
 From writing notes, managing tasks, to connecting with others — FocusMeet keeps you in sync and focused.
 
+[Features](#-key-features) • [Tech Stack](#-tech-stack) • [Screenshots](#-app-screenshots) • [Getting Started](#-getting-started)
+
+</div>
+
 ---
 
-## 🔧 Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React.js
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: JWT, bcrypt, cookie-parser
+### Frontend
+- ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) **React.js** - UI Library
+- ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white) **Vite** - Build Tool
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) **Tailwind CSS** - Styling
+- ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white) **Axios** - HTTP Client
+
+### Backend
+- ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white) **Node.js** - Runtime Environment
+- ![Express.js](https://img.shields.io/badge/Express.js-404D59?style=flat) **Express.js** - Web Framework
+- ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white) **MongoDB** - Database
+- ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongodb&logoColor=white) **Mongoose** - ODM
+
+### Authentication & Security
+- ![JWT](https://img.shields.io/badge/JWT-000000?style=flat&logo=JSON%20web%20tokens&logoColor=white) **JWT** - Authentication
+- ![Bcrypt](https://img.shields.io/badge/Bcrypt-004D40?style=flat&logo=bcrypt&logoColor=white) **Bcrypt** - Password Hashing
+- ![Cookie Parser](https://img.shields.io/badge/Cookie_Parser-FF5733?style=flat&logo=cookie&logoColor=white) **Cookie Parser** - Cookie Management
+
+### Development Tools
+- ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) **Git** - Version Control
+- ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white) **VS Code** - IDE
+- ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white) **Postman** - API Testing
 
 ---
 
@@ -97,23 +126,68 @@ From writing notes, managing tasks, to connecting with others — FocusMeet keep
 
 ## 🚀 Getting Started
 
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
+
+### Installation
+
 1. **Clone the repository**
-2. **Install dependencies**
-   - Backend: `npm install`
-   - Frontend: `npm install`
-3. **Start development servers**
-   - Backend: `nodemon`
-   - Frontend: `npm run dev`
-4. **Ensure MongoDB is running locally or use MongoDB Atlas`
+```bash
+git clone https://github.com/yourusername/focusmeet-app.git
+cd focusmeet-app
+```
 
----
+2. **Install Backend Dependencies**
+```bash
+cd Backend
+npm install
+```
 
-## 🤝 Contribute
+3. **Install Frontend Dependencies**
+```bash
+cd ../Frontend
+npm install
+```
 
-Pull requests are welcome! If you'd like to add features or fix bugs, feel free to fork and submit a PR.
+4. **Environment Setup**
+   - Create `.env` file in Backend directory
+   - Add required environment variables:
+   ```
+   PORT=5000
+   MONGODB_URI=your_mongodb_uri
+   JWT_SECRET=your_jwt_secret
+   ```
 
----
+5. **Start the Application**
+   - Start Backend:
+   ```bash
+   cd Backend
+   npm run dev
+   ```
+   - Start Frontend:
+   ```bash
+   cd Frontend
+   npm run dev
+   ```
 
-## 📬 Contact
+## 📝 License
 
-I'm currently in the learning phase — if you enjoyed this project, check out my other repos and feel free to leave a star ⭐ or open an issue to suggest improvements. Let's stay focused — together, on **FocusMeet** ✨
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### 📬 Contact
+
+- 📧 [kirito@gmail.com](kirito666codr@gmail.com)
+- 💻 [GitHub: Kirito666codr](https://github.com/Kirito666codr)
+- 🔗 [FocusMeet App](https://github.com/Kirito666codr/focusmeet-app)
