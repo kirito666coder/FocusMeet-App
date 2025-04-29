@@ -135,7 +135,7 @@ From writing notes, managing tasks, to connecting with others — FocusMeet keep
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/focusmeet-app.git
+[git clone https://github.com/yourusername/focusmeet-app.git](https://github.com/kirito666coder/FocusMeet-App.git)
 cd focusmeet-app
 ```
 
@@ -164,7 +164,8 @@ npm install
    - Start Backend:
    ```bash
    cd Backend
-   npm run dev
+   npm i nodemon
+   nodemon
    ```
    - Start Frontend:
    ```bash
