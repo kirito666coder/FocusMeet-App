@@ -1,0 +1,12 @@
+$main-color: #3b82f6;
+
+body {
+  background-color: $main-color;
+  color: white;
+  font-family: sans-serif;
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
